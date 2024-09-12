@@ -4,15 +4,18 @@ import { useTheme } from "./providers/ThemeProvider/lib/useTheme"
 import { classNames } from "shared/lib/classNames"
 import { AppRouter } from "./providers/router"
 import { NavBar } from "widgets/NavBar"
+import { Sidebar } from "widgets/Sidebar/ui"
 
 export const App = (): JSX.Element => {
-    const { theme, toggleTheme } = useTheme()
+    const { theme } = useTheme()
 
     return (
         <div className={classNames('app', {}, [theme])}>
             <NavBar />
-            <AppRouter />
-            <button onClick={toggleTheme}>TOGGLE</button>
+            <div className="content-page">
+                <Sidebar />
+                <AppRouter />
+            </div>
         </div>
     )
 }
