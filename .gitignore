@@ -1,4 +1,7 @@
 /.vscode
 /build
 /node_modules
+
+# System Files
 /.DS_Store
+**/.DS_Store
