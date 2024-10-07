@@ -19,14 +19,12 @@ export const AppLink: FC<AppLinkProps> = ({
   to,
   theme = AppLinkTheme.PRIMARY,
   ...props
-}) => {
-  return (
-    <Link
-      to={to}
-      className={classNames(styles.appLink, {}, [className, styles[theme]])}
-      {...props}
-    >
-      {children}
-    </Link>
-  );
-};
+}) => (
+  <Link
+    to={to}
+    className={classNames(styles.appLink, {}, [className, styles[theme]])}
+    {...props}
+  >
+    {children}
+  </Link>
+);

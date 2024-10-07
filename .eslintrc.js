@@ -12,7 +12,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['@typescript-eslint', 'react', 'eslint-plugin-prettier"'],
+  plugins: ['@typescript-eslint', 'react', 'eslint-plugin-prettier'],
   rules: {
     'prettier/prettier': [
       'warn',
@@ -31,5 +31,20 @@ module.exports = {
     'react/function-component-definition': 'off',
     'arrow-parens': 'off',
     'react/no-deprecated': 'warn',
+    'import/extensions': 'off',
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        devDependencies: true,
+      },
+    ],
+    'react/jsx-props-no-spreading': 'warn',
+    // Уже исправили в новой версии
+    'no-shadow': 'warn',
+    'no-underscore-dangle': 'off',
+    'no-undef': 'warn',
+  },
+  globals: {
+    __IS_DEV__: true,
   },
 };
