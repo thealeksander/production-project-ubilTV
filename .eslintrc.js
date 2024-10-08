@@ -3,7 +3,12 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ['eslint:recommended', 'airbnb', 'eslint-config-prettier'],
+  extends: [
+    'eslint:recommended',
+    'airbnb',
+    'eslint-config-prettier',
+    'plugin:i18next/recommended',
+  ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
@@ -12,7 +17,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['@typescript-eslint', 'react', 'eslint-plugin-prettier'],
+  plugins: ['@typescript-eslint', 'react', 'eslint-plugin-prettier', 'i18next'],
   rules: {
     'prettier/prettier': [
       'warn',
@@ -43,6 +48,8 @@ module.exports = {
     'no-shadow': 'warn',
     'no-underscore-dangle': 'off',
     'no-undef': 'warn',
+    // только на отсутствие переводов jsx
+    'i18next/no-literal-string': ['warn', { markupOnly: true }],
   },
   globals: {
     __IS_DEV__: true,
