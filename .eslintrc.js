@@ -51,6 +51,11 @@ module.exports = {
     'no-undef': 'warn',
     // только на отсутствие переводов jsx
     'i18next/no-literal-string': ['warn', { markupOnly: true }],
+    'max-len': [
+      'error',
+      { ignoreComments: true, ignorePattern: '^import\\s.+\\sfrom\\s.+;$' },
+    ],
+    '@typescript-eslint/no-unused-vars': 'warn',
   },
   globals: {
     __IS_DEV__: true,
