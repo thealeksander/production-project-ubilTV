@@ -42,5 +42,7 @@
     "compilerOptions": {
       "module": "CommonJS"
     }
-  }
+  },
+  //для абсолютного импорта + настройка jest
+  "include": ["./config/jest/jest-setup.ts", "./src/**/*"]
 }

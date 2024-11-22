@@ -1,3 +1,4 @@
+import path = require('path');
 /*
  * For a detailed explanation regarding each configuration property and type check, visit:
  * https://jestjs.io/docs/configuration
@@ -24,6 +25,13 @@ export default {
     '<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)',
   ],
   rootDir: '../../',
+  setupFilesAfterEnv: ['<rootDir>config/jest/setupTests.ts'],
+  modulePaths: ['<rootDir>src'],
+  moduleNameMapper: {
+    '\\.(s?css)$': 'identity-obj-proxy',
+    // мок для обработки svg
+    '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
+  },
 
   // Indicates whether the coverage information should be collected while executing the test
   // collectCoverage: false,
