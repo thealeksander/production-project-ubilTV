@@ -9,6 +9,7 @@ module.exports = {
     'airbnb',
     'eslint-config-prettier',
     'plugin:i18next/recommended',
+    'plugin:storybook/recommended',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -56,6 +57,7 @@ module.exports = {
       { ignoreComments: true, ignorePattern: '^import\\s.+\\sfrom\\s.+;$' },
     ],
     '@typescript-eslint/no-unused-vars': 'warn',
+    'react/destructuring-assignment': 'warn',
   },
   globals: {
     __IS_DEV__: true,

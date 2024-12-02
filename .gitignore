@@ -5,3 +5,4 @@
 # System Files
 /.DS_Store
 **/.DS_Store
+*storybook.log

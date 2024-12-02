@@ -44,5 +44,5 @@
     }
   },
   //для абсолютного импорта + настройка jest
-  "include": ["./config/jest/jest-setup.ts", "./src/**/*"]
+  "include": ["./config/jest/jest-setup.ts", "./src/**/*.ts", "./src/**/*.tsx"]
 }

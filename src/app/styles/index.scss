@@ -1,7 +1,7 @@
-@import "reset";
-@import "variables/global";
-@import "themes/light";
-@import "themes/dark";
+@import 'reset';
+@import 'variables/global';
+@import 'themes/light';
+@import 'themes/dark';
 
 .app {
   font: var(--font-m);
@@ -16,4 +16,9 @@
 
 .page-wrapper {
   flex-grow: 1;
+}
+
+#storybook-root {
+  margin: 0;
+  width: 100%;
 }
