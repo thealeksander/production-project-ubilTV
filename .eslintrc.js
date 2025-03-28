@@ -19,7 +19,13 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['@typescript-eslint', 'react', 'eslint-plugin-prettier', 'i18next'],
+  plugins: [
+    '@typescript-eslint',
+    'react',
+    'eslint-plugin-prettier',
+    'i18next',
+    'react-hooks',
+  ],
   rules: {
     'prettier/prettier': [
       'warn',
@@ -58,6 +64,10 @@ module.exports = {
     ],
     '@typescript-eslint/no-unused-vars': 'warn',
     'react/destructuring-assignment': 'warn',
+    'jsx-a11y/no-static-element-interactions': 'off',
+    'jsx-a11y/click-events-have-key-events': 'off',
+    'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
+    'react-hooks/exhaustive-deps': 'error', // Checks effect dependencies
   },
   globals: {
     __IS_DEV__: true,
