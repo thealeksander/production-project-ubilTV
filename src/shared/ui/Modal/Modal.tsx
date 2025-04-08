@@ -25,8 +25,6 @@ export const Modal: FC<ModalProps> = ({
     e.stopPropagation();
   };
 
-  console.log('render');
-
   const onCloseHandler = useCallback(() => {
     if (onClose) {
       setIsClosing(true);
