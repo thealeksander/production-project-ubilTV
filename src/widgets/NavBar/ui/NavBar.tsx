@@ -5,6 +5,7 @@ import { Modal } from 'shared/ui/Modal';
 import { Button } from 'shared/ui/Button';
 import { ButtonTheme } from 'shared/ui/Button/Button';
 import { useCallback, useState } from 'react';
+import { LoginModal } from 'features/AuthByUsername';
 import styles from './NavBar.module.scss';
 
 interface NavBarProps {
@@ -16,22 +17,24 @@ export function NavBar({ className }: NavBarProps) {
 
   const [isAuthModal, setIsAuthModal] = useState(false);
 
-  const onAuthModalHandler = useCallback(() => {
-    setIsAuthModal(prev => !prev);
+  const onCloseModal = useCallback(() => {
+    setIsAuthModal(false);
+  }, []);
+
+  const onShowModal = useCallback(() => {
+    setIsAuthModal(true);
   }, []);
 
   return (
     <div className={classNames(styles.navBar, {}, [className])}>
       <Button
         theme={ButtonTheme.CLEAR_INVERTED}
-        onClick={onAuthModalHandler}
+        onClick={onShowModal}
         className={styles.links}
       >
         {t('Войти')}
       </Button>
-      <Modal isOpen={isAuthModal} onClose={onAuthModalHandler}>
-        wefjpowejfiopwejhfopiwejfpowejfpojwepofjpweojfpowejfpo
-      </Modal>
+      <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />
     </div>
   );
 }
