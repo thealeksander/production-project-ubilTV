@@ -1,24 +1,42 @@
-import { FC, memo, useCallback } from 'react';
+import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from 'shared/ui/Button';
 import { classNames } from 'shared/lib/classNames';
 import { Input } from 'shared/ui/Input';
 import { ButtonTheme } from 'shared/ui/Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginActions } from 'features/AuthByUsername/model/slice/loginSlice';
-import { getLoginState } from 'features/AuthByUsername/model/selectors/getLoginState';
+import {
+  loginActions,
+  loginReducer,
+} from 'features/AuthByUsername/model/slice/loginSlice';
 import { loginByUserName } from 'features/AuthByUsername/model/services/loginByUsername';
 import { Text, TextTheme } from 'shared/ui/Text';
+import { getLoginError } from 'features/AuthByUsername/model/selectors/getLoginError';
+import { getLoginLoading } from 'features/AuthByUsername/model/selectors/getLoginLoading';
+import { getLoginPassword } from 'features/AuthByUsername/model/selectors/getLoginPassword';
+import { getLoginUsername } from 'features/AuthByUsername/model/selectors/getLoginUsername';
+import {
+  ReducerList,
+  useDynamicModuleLoader,
+} from 'shared/lib/hooks/useDynamicModuleLoader';
 import styles from './LoginForm.module.scss';
 
-interface LoginFormProps {
+export interface LoginFormProps {
   className?: string;
 }
 
-export const LoginForm = memo(({ className }: LoginFormProps) => {
+const initialReducers: ReducerList = {
+  loginForm: loginReducer,
+};
+
+const LoginForm = memo(({ className }: LoginFormProps) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const { username, password, isLoading, error } = useSelector(getLoginState);
+
+  const username = useSelector(getLoginUsername);
+  const password = useSelector(getLoginPassword);
+  const isLoading = useSelector(getLoginLoading);
+  const error = useSelector(getLoginError);
 
   const onChangeUsername = useCallback(
     (value: string) => {
@@ -37,6 +55,11 @@ export const LoginForm = memo(({ className }: LoginFormProps) => {
   const onLoginClick = useCallback(() => {
     dispatch(loginByUserName({ username, password }));
   }, [dispatch, username, password]);
+
+  useDynamicModuleLoader({
+    keyReducer: 'loginForm',
+    reducers: initialReducers,
+  });
 
   return (
     <div className={classNames(styles.loginForm, {}, [className])}>
@@ -71,3 +94,5 @@ export const LoginForm = memo(({ className }: LoginFormProps) => {
     </div>
   );
 });
+
+export default LoginForm;
