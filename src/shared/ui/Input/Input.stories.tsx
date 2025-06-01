@@ -20,6 +20,5 @@ export const Primary: Story = {
   args: {
     placeholder: 'Type Text',
     value: '12345',
-    children: 'Text',
   },
 };

@@ -8,5 +8,8 @@
   "Страница не найдена": "Page not found",
   "Короткий язык": "RU",
   "Войти": "Login",
-  "Введите username": "Enter username"
+  "Выйти": "Logout",
+  "Введите username": "Enter username",
+  "Форма авторизаци": "Authorization",
+  "Вы ввели неверный логин или пароль": "Invalid username or password"
 }

@@ -1,5 +1,4 @@
 import { Decorator } from '@storybook/react/*';
-import { Theme } from 'app/providers/ThemeProvider';
 import 'app/styles/index.scss';
 import { BrowserRouter } from 'react-router-dom';
 

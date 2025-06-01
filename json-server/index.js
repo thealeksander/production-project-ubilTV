@@ -2,12 +2,16 @@ const fs = require('fs');
 const jsonServer = require('json-server');
 // const jwt = require('jsonwebtoken');
 const path = require('path');
+// const cors = require('cors');
 
 const server = jsonServer.create();
 const router = jsonServer.router(path.resolve(__dirname, 'db.json'));
 
 // это функции, которые обрабатывают HTTP-запросы и ответы в серверных приложениях.
-const middlewares = jsonServer.defaults();
+const middlewares = jsonServer.defaults({});
+
+server.use(middlewares);
+server.use(jsonServer.bodyParser);
 
 // Нужно для небольшой задержки,чтобы запрос проходил не мгновенно, имитция реального апи
 server.use(async (req, res, next) => {
@@ -16,18 +20,6 @@ server.use(async (req, res, next) => {
   });
   next();
 });
-
-// проверяем, авторизован ли пользователь
-// eslint-disable-next-line consistent-return
-server.use((req, res, next) => {
-  if (!req.headers.authorization) {
-    return res.status(403).json({ message: 'AUTH ERROR' });
-  }
-  next();
-});
-
-server.use(middlewares);
-server.use(router);
 
 // эндпоинт для логина
 server.post('/login', (req, res) => {
@@ -48,6 +40,28 @@ server.post('/login', (req, res) => {
 
   return res.status(403).json({ message: 'AUTH ERROR' });
 });
+
+// проверяем, авторизован ли пользователь
+// eslint-disable-next-line consistent-return
+server.use((req, res, next) => {
+  if (!req.headers.authorization) {
+    return res.status(403).json({ message: 'AUTH ERROR' });
+  }
+  next();
+});
+
+server.use(router);
+
+// Настрйока CORS, чтобы проходили запросы
+// server.use(
+//   cors({
+//     origin: true,
+//     credentials: true,
+//     preflightContinue: false,
+//     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//   }),
+// );
+// server.options('*', cors());
 
 // запуск сервера
 server.listen(8000, () => {

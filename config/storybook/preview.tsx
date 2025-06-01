@@ -1,5 +1,8 @@
 import type { Preview } from '@storybook/react';
 import { StoreDecorator } from '../../src/shared/config/storybook/StoreDecorators/StoreDecorator';
+import { StoreReduxDecorator } from '../../src/shared/config/storybook/StoreReduxDecorator/StoreReduxDecorator';
+import { TranslationDecorator } from '../../src/shared/config/storybook/TranslationDecorator/TranslationDecorator';
+
 import { globalTypes } from '../../src/shared/config/storybook/globalTypes/globalTypes';
 
 import { ThemeDecorator } from '../../src/shared/config/storybook/ThemeDecorator/ThemeDecorator';
@@ -20,9 +23,11 @@ const preview: Preview = {
   // глобальные изменения на все сторы
   decorators: [
     StoreDecorator,
+    StoreReduxDecorator({ loginForm: { username: 'user', password: '123' } }),
     FullScreenDecorator,
     ThemeDecorator,
     RouterDecorator,
+    TranslationDecorator,
   ],
 };
 
