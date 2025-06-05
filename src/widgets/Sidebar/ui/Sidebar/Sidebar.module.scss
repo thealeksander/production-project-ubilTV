@@ -29,20 +29,6 @@
   margin-top: 20px;
   display: flex;
   flex-direction: column;
-
-  .itemLink {
-    margin-top: 10px;
-    display: flex;
-    align-items: center;
-  }
-
-  .namePage {
-    margin-left: 10px;
-  }
-
-  .icon {
-    fill: var(--inverted-primary-color);
-  }
 }
 
 .collapsed {
@@ -55,10 +41,5 @@
 
   .lang {
     margin-left: 0;
-  }
-
-  .namePage {
-    opacity: 0;
-    width: 0;
   }
 }

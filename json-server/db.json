@@ -15,6 +15,13 @@
     }
   ],
   "profile": {
-    "name": "typicode"
+    "first": "Александр",
+    "lastname": "Кузнецов",
+    "age": 24,
+    "currency": "RUB",
+    "country": "Russia",
+    "city": "Moscow",
+    "username": "admin",
+    "avatar": "https://masterpiecer-images.s3.yandex.net/2eb8f735807711ee9ecd2ab2a9c6ab46:upscaled"
   }
 }

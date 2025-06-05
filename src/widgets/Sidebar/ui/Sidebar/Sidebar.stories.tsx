@@ -15,7 +15,5 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Light: Story = {
-  args: {
-    children: 'Text',
-  },
+  args: {},
 };

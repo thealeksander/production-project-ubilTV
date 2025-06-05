@@ -11,13 +11,11 @@ export type ReducerList = {
 export type ReducerListEntry = [StateSchemaKey, Reducer];
 
 interface UseDynamicModuleLoaderProps {
-  keyReducer: StateSchemaKey;
   reducers: ReducerList;
   removeAfterUnmount?: boolean;
 }
 
 export const useDynamicModuleLoader = ({
-  keyReducer,
   reducers,
   removeAfterUnmount = true,
 }: UseDynamicModuleLoaderProps) => {

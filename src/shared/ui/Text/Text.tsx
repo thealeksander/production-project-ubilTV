@@ -1,5 +1,6 @@
 import { classNames } from 'shared/lib/classNames';
 import { ValueOf } from 'shared/lib/types/types';
+import { memo } from 'react';
 import styles from './Text.module.scss';
 
 export const TextTheme = {
@@ -16,7 +17,7 @@ interface TextProps {
   theme?: TextThemeType;
 }
 
-export const Text = (props: TextProps) => {
+export const Text = memo((props: TextProps) => {
   const { className, title, text, theme = TextTheme.PRIMARY } = props;
 
   const mods: Record<string, boolean> = {
@@ -29,4 +30,4 @@ export const Text = (props: TextProps) => {
       {title && <p className={styles.title}>{title}</p>}
     </div>
   );
-};
+});
