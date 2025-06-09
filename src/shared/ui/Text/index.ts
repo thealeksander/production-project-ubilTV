@@ -1,1 +1,2 @@
-export { Text, TextTheme } from './Text';
+export { Text } from './Text';
+export { TextTheme } from './Text';

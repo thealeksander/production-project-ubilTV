@@ -55,12 +55,16 @@ module.exports = {
     // Уже исправили в новой версии
     'no-shadow': 'warn',
     'no-underscore-dangle': 'off',
-    'no-undef': 'warn',
+    'no-undef': 'off',
     // только на отсутствие переводов jsx
     'i18next/no-literal-string': ['warn', { markupOnly: true }],
     'max-len': [
       'error',
-      { ignoreComments: true, ignorePattern: '^import\\s.+\\sfrom\\s.+;$' },
+      {
+        ignoreComments: true,
+        ignorePattern: '^import\\s.+\\sfrom\\s.+;$',
+        code: 90,
+      },
     ],
     '@typescript-eslint/no-unused-vars': 'warn',
     'react/destructuring-assignment': 'warn',
@@ -72,6 +76,7 @@ module.exports = {
   },
   globals: {
     __IS_DEV__: true,
+    __API__: true,
   },
   overrides: [
     {

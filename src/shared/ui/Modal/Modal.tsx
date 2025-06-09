@@ -1,5 +1,6 @@
 import { FC, ReactNode, useCallback, useEffect, useRef, useState } from 'react';
 import { classNames } from 'shared/lib/classNames';
+import { Mods } from 'shared/lib/classNames/classNames';
 import styles from './Modal.module.scss';
 import { Portal } from '../Portal';
 
@@ -48,7 +49,7 @@ export const Modal: FC<ModalProps> = ({
     [onCloseHandler],
   );
 
-  const mods: Record<string, boolean> = {
+  const mods: Mods = {
     [styles.opened]: isOpen,
     [styles.isClosing]: isClosing,
   };
