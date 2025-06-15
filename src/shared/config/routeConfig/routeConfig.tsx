@@ -4,6 +4,10 @@ import { NotFoundPage } from 'pages/NotFoundPage';
 import { ProfilePageLazy } from 'pages/ProfilePage';
 import { RouteProps } from 'react-router-dom';
 
+type AppRoutesProps = RouteProps & {
+  authOnly?: boolean;
+};
+
 export enum AppRoutes {
   MAIN = 'MAIN',
   ABOUT = 'ABOUT',
@@ -20,7 +24,7 @@ export const RoutePath: Record<AppRoutes, string> = {
   [AppRoutes.NOT_FONUD]: '*',
 };
 
-export const routeConfig: Record<AppRoutes, RouteProps> = {
+export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
   [AppRoutes.MAIN]: {
     path: RoutePath.MAIN,
     element: <MainPageLazy />,
@@ -32,6 +36,7 @@ export const routeConfig: Record<AppRoutes, RouteProps> = {
   [AppRoutes.PROFILE]: {
     path: RoutePath.PROFILE,
     element: <ProfilePageLazy />,
+    authOnly: true,
   },
   // last
   [AppRoutes.NOT_FONUD]: {

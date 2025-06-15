@@ -63,7 +63,7 @@ module.exports = {
       {
         ignoreComments: true,
         ignorePattern: '^import\\s.+\\sfrom\\s.+;$',
-        code: 90,
+        code: 98,
       },
     ],
     '@typescript-eslint/no-unused-vars': 'warn',
