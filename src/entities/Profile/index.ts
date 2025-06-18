@@ -1,6 +1,6 @@
 export {
   Profile,
-  ProfilSchema,
+  ProfileSchema as ProfilSchema,
   ValidateProfileError,
 } from './model/types/profile';
 export { profileReducer, profileActions } from './model/slice/profileSlice';

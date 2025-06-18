@@ -86,7 +86,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
 
   return (
     <div className={classNames(styles.profileCard, mods, [className])}>
-      <div className={styles.data}>
+      <div>
         {data?.avatar && (
           <div className={styles.avatarWrapper}>
             <Avatar src={data?.avatar} alt="" />
