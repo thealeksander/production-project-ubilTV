@@ -4,6 +4,7 @@
     "indentation": [2],
     "selector-class-pattern": null,
     "declaration-empty-line-before": null,
-    "string-quotes": "single"
+    "string-quotes": "single",
+    "declaration-colon-newline-after": null
   }
 }

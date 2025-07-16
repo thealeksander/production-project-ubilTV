@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Text, TextTheme } from './Text';
+import { Text, TextSize, TextTheme } from './Text';
 
 const meta = {
   title: 'shared/Text',
@@ -39,5 +39,13 @@ export const Error: Story = {
     title: 'Title exapmle',
     text: 'Text exapmle',
     theme: TextTheme.ERROR,
+  },
+};
+
+export const SizeL: Story = {
+  args: {
+    title: 'Title exapmle',
+    text: 'Text exapmle',
+    size: TextSize.L,
   },
 };

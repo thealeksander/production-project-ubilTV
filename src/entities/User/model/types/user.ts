@@ -5,4 +5,7 @@ export interface User {
 
 export interface UserSchema {
   authData?: User;
+
+  // выглядит как костыль
+  _inited: boolean;
 }
