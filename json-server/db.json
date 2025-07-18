@@ -98,7 +98,16 @@
     {
       "id": 1,
       "username": "admin",
-      "password": "123"
+      "password": "123",
+      "role": "ADMIN",
+      "avatar": "https://masterpiecer-images.s3.yandex.net/2eb8f735807711ee9ecd2ab2a9c6ab46:upscaled"
+    },
+    {
+      "id": 2,
+      "username": "admin",
+      "password": "123",
+      "role": "USER",
+      "avatar": "https://cdn.forbes.ru/forbes-static/new/2024/07/1a97fec5-d64b-47a2-8a18-df96b9cc13c3-668e4b6f8568e.webp"
     }
   ],
   "profile": {

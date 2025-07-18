@@ -11,5 +11,6 @@
   "Выйти": "Logout",
   "Введите username": "Enter username",
   "Форма авторизаци": "Authorization",
-  "Вы ввели неверный логин или пароль": "Invalid username or password"
+  "Вы ввели неверный логин или пароль": "Invalid username or password",
+  "Коменнтарии отсутствуют": "Comments aren't found"
 }
