@@ -23,7 +23,7 @@ export enum AppRoutes {
 export const RoutePath: Record<AppRoutes, string> = {
   [AppRoutes.MAIN]: '/',
   [AppRoutes.ABOUT]: '/about',
-  [AppRoutes.PROFILE]: '/profile',
+  [AppRoutes.PROFILE]: '/profile/',
   [AppRoutes.ARTICLES]: '/articles',
   [AppRoutes.ARTILCE_DETAILS]: '/articles/',
 
@@ -41,7 +41,7 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     element: <AboutPageLazy />,
   },
   [AppRoutes.PROFILE]: {
-    path: RoutePath.PROFILE,
+    path: `${RoutePath.PROFILE}:id`,
     element: <ProfilePageLazy />,
     authOnly: true,
   },

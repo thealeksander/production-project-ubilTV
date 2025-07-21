@@ -29,6 +29,9 @@ const articleDetailsCommentsSlice = createSlice({
     booksReceived(state, action) {
       commnetsAdapter.setAll(state, action.payload.books);
     },
+    addComment: (state, action: PayloadAction<CommentType>) => {
+      commnetsAdapter.setOne(state, action.payload);
+    },
   },
   extraReducers: builder => {
     builder
@@ -50,5 +53,7 @@ const articleDetailsCommentsSlice = createSlice({
   },
 });
 
-export const { reducer: articleDetailsCommentsReducer } =
-  articleDetailsCommentsSlice;
+export const {
+  reducer: articleDetailsCommentsReducer,
+  actions: articleDetailsCommentsActions,
+} = articleDetailsCommentsSlice;

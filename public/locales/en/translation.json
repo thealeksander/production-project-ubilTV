@@ -12,5 +12,7 @@
   "Введите username": "Enter username",
   "Форма авторизаци": "Authorization",
   "Вы ввели неверный логин или пароль": "Invalid username or password",
-  "Коменнтарии отсутствуют": "Comments aren't found"
+  "Коменнтарии отсутствуют": "Comments aren't found",
+  "Введите текст комментария": "Enter the comment text",
+  "Отправить": "Send"
 }

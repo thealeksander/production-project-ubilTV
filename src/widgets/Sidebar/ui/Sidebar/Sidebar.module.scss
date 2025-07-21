@@ -4,6 +4,9 @@
   background: var(--inverted-bg-color);
   position: relative;
   transition: width 0.3s;
+
+  // чтобы сайдбар не сжимался
+  flex-shrink: 0;
 }
 
 .switchers {

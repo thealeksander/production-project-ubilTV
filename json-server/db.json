@@ -1,7 +1,15 @@
 {
   "posts": [
-    { "id": "1", "title": "a title", "views": 100 },
-    { "id": "2", "title": "another title", "views": 200 }
+    {
+      "id": "1",
+      "title": "a title",
+      "views": 100
+    },
+    {
+      "id": "2",
+      "title": "another title",
+      "views": 200
+    }
   ],
   "articles": [
     {
@@ -11,7 +19,9 @@
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
       "views": 1022,
       "createdAt": "26.02.2022",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -92,6 +102,30 @@
       "text": "some comment 3",
       "articleId": "1",
       "userId": "1"
+    },
+    {
+      "articleId": "1",
+      "userId": 1,
+      "text": "Hello, world!",
+      "id": "MvFWILE"
+    },
+    {
+      "articleId": "1",
+      "userId": 1,
+      "text": "Как дела?",
+      "id": "OSYjHxt"
+    },
+    {
+      "articleId": "1",
+      "userId": 1,
+      "text": "wefewf",
+      "id": "KHOMWUT"
+    },
+    {
+      "articleId": "1",
+      "userId": 1,
+      "text": "werfewf",
+      "id": "em06jmL"
     }
   ],
   "users": [
@@ -104,20 +138,34 @@
     },
     {
       "id": 2,
-      "username": "admin",
-      "password": "123",
+      "username": "shrek",
+      "password": "456",
       "role": "USER",
       "avatar": "https://cdn.forbes.ru/forbes-static/new/2024/07/1a97fec5-d64b-47a2-8a18-df96b9cc13c3-668e4b6f8568e.webp"
     }
   ],
-  "profile": {
-    "first": "Александр",
-    "lastname": "Кузнецов",
-    "age": 24,
-    "currency": "RUB",
-    "country": "Russia",
-    "city": "Moscow",
-    "username": "admin",
-    "avatar": "https://masterpiecer-images.s3.yandex.net/2eb8f735807711ee9ecd2ab2a9c6ab46:upscaled"
-  }
+  "profile": [
+    {
+      "id": 1,
+      "first": "Александр",
+      "lastname": "Кузнецов",
+      "age": 24,
+      "currency": "RUB",
+      "country": "Russia",
+      "city": "Moscow",
+      "username": "admin",
+      "avatar": "https://masterpiecer-images.s3.yandex.net/2eb8f735807711ee9ecd2ab2a9c6ab46:upscaled"
+    },
+    {
+      "id": 2,
+      "first": "Шрэк",
+      "lastname": "Болотный",
+      "age": 30,
+      "currency": "RUB",
+      "country": "Russia",
+      "city": "Moscow",
+      "username": "shrek",
+      "avatar": "https://cdn.forbes.ru/forbes-static/new/2024/07/1a97fec5-d64b-47a2-8a18-df96b9cc13c3-668e4b6f8568e.webp"
+    }
+  ]
 }

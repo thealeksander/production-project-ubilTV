@@ -13,6 +13,7 @@ const data = {
   lastname: 'trh',
   currency: Currency.EUR,
   country: Country.Russia,
+  id: '1',
 };
 
 describe('profileSlice test', () => {
@@ -70,7 +71,7 @@ describe('profileSlice test', () => {
     expect(
       profileReducer(
         state as ProfileSchema,
-        updateProfileData.fulfilled(data, ''),
+        updateProfileData.fulfilled(data, '1'),
       ),
     ).toEqual<DeepPartial<ProfileSchema>>({
       isLoading: false,
