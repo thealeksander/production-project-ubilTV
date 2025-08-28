@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames';
 import { memo, useCallback } from 'react';
 import { ArticleDetails } from 'entities/Article';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Text } from 'shared/ui/Text';
 import { CommentList, CommentType } from 'entities/Comment';
 import {
@@ -13,6 +13,9 @@ import { useSelector } from 'react-redux';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { AddCommentFormLazy } from 'features/addCommentForm';
+import { Button } from 'shared/ui/Button';
+import { ButtonTheme } from 'shared/ui/Button/Button';
+import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import styles from './ArticleDetailsPage.module.scss';
 import {
   articleDetailsCommentsReducer,
@@ -66,6 +69,11 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
   const comments = useSelector(getArticleComments.selectAll);
   const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
   const commentsError = useSelector(getArticleCommentsError);
+  const navigate = useNavigate();
+
+  const onBackToList = useCallback(() => {
+    navigate(RoutePath.ARTICLES);
+  }, [navigate]);
 
   const onSendComment = useCallback(
     (text: string) => {
@@ -88,6 +96,9 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
 
   return (
     <div className={classNames(styles.articleDetailsPage, {}, [className])}>
+      <Button theme={ButtonTheme.OUTLINE} onClick={onBackToList}>
+        {t('Назад к списку')}
+      </Button>
       <ArticleDetails id={id} />
       <Text className={styles.commentTitle} title={t('Комментарии')} />
       <AddCommentFormLazy onSendComment={onSendComment} />
