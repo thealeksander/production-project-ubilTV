@@ -23,6 +23,7 @@ import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
 import { useParams } from 'react-router-dom';
+import { Page } from 'shared/ui/Page';
 import styles from './ProfilePage.module.scss';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
@@ -117,7 +118,7 @@ const ProfilePage = () => {
   );
 
   return (
-    <div className={styles.container}>
+    <Page className={styles.container}>
       <ProfilePageHeader />
       {validateErrors?.length &&
         validateErrors.map(err => (
@@ -141,7 +142,7 @@ const ProfilePage = () => {
         onChangeCurrency={onChangeCurrency}
         onChangeCountry={onChangeCountry}
       />
-    </div>
+    </Page>
   );
 };
 

@@ -16,6 +16,7 @@ import { AddCommentFormLazy } from 'features/addCommentForm';
 import { Button } from 'shared/ui/Button';
 import { ButtonTheme } from 'shared/ui/Button/Button';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { Page } from 'shared/ui/Page';
 import styles from './ArticleDetailsPage.module.scss';
 import {
   articleDetailsCommentsReducer,
@@ -88,14 +89,14 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
 
   if (!id) {
     return (
-      <div className={classNames(styles.articleDetailsPage, {}, [className])}>
+      <Page className={classNames(styles.articleDetailsPage, {}, [className])}>
         {t('Статья не найдена')}
-      </div>
+      </Page>
     );
   }
 
   return (
-    <div className={classNames(styles.articleDetailsPage, {}, [className])}>
+    <Page className={classNames(styles.articleDetailsPage, {}, [className])}>
       <Button theme={ButtonTheme.OUTLINE} onClick={onBackToList}>
         {t('Назад к списку')}
       </Button>
@@ -103,7 +104,7 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
       <Text className={styles.commentTitle} title={t('Комментарии')} />
       <AddCommentFormLazy onSendComment={onSendComment} />
       <CommentList isLoading={commentsIsLoading} comments={comments} />
-    </div>
+    </Page>
   );
 };
 

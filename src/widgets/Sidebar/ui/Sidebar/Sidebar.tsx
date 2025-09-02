@@ -1,4 +1,4 @@
-import { FC, memo, useState } from 'react';
+import { memo, useState } from 'react';
 import { classNames } from 'shared/lib/classNames';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { LangSwitcher } from 'widgets/LangSwitcher';
@@ -22,7 +22,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
   };
 
   return (
-    <div
+    <menu
       data-testid="sidebar"
       className={classNames(styles.sidebar, { [styles.collapsed]: collapsed }, [
         className,
@@ -48,6 +48,6 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
         <ThemeSwitcher />
         <LangSwitcher shortLng={collapsed} className={styles.lang} />
       </div>
-    </div>
+    </menu>
   );
 });
