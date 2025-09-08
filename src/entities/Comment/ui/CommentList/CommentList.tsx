@@ -39,6 +39,7 @@ export const CommentList = (props: CommentListProps) => {
             isLoading={isLoading}
             className={styles.comment}
             comment={comment}
+            key={comment.id}
           />
         ))
       ) : (

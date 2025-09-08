@@ -22,11 +22,11 @@ import { useSelector } from 'react-redux';
 import {
   getArticlesPageError,
   getArticlesPageIsLoading,
-  getArticlesPageNumebr,
   getArticlesPageView,
 } from 'pages/ArticlesPage/model/selectors/articlesPageSelectors';
 import { Page } from 'shared/ui/Page';
 import { fetchNextArticlesPage } from 'pages/ArticlesPage/model/services/fetchNextArticlesPage/fetchNextArticlesPage';
+import { initArticlesPage } from 'pages/ArticlesPage/model/services/initArticlesPage/initArticlesPage';
 import styles from './ArticlesPage.module.scss';
 
 interface ArticlesPageProps {
@@ -61,12 +61,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
   useDynamicModuleLoader({ reducers });
 
   useInitialEffect(() => {
-    dispatch(articlesPageActions.initState());
-    dispatch(
-      fetchArticlesList({
-        page: 1,
-      }),
-    );
+    dispatch(initArticlesPage());
   });
 
   return (

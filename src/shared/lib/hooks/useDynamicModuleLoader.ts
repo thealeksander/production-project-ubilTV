@@ -17,22 +17,25 @@ interface UseDynamicModuleLoaderProps {
 
 export const useDynamicModuleLoader = ({
   reducers,
-  removeAfterUnmount = true,
+  removeAfterUnmount = false,
 }: UseDynamicModuleLoaderProps) => {
   const store = useStore() as ReduxStoreWithManager;
   const dispatch = useDispatch();
 
   useEffect(() => {
+    const mountedReducer = store.reducerManager.getReducerMap();
     Object.entries(reducers).forEach(([name, reducer]) => {
-      store.reducerManager.add(name as StateSchemaKey, reducer);
-      dispatch({ type: `@INIT ${name} reducer` });
+      const isMounted = !!mountedReducer[name as StateSchemaKey];
+      if (!isMounted) {
+        store.reducerManager.add(name as StateSchemaKey, reducer);
+        dispatch({ type: `@INIT ${name} reducer` });
+      }
     });
 
     return () => {
       if (removeAfterUnmount) {
-        Object.entries(reducers).forEach(([name, reducer]) => {
+        Object.entries(reducers).forEach(([name]) => {
           store.reducerManager.remove(name as StateSchemaKey);
-
           dispatch({ type: `@DESTROY ${name} reducer` });
         });
       }
