@@ -16,7 +16,7 @@ import { AddCommentFormLazy } from 'features/addCommentForm';
 import { Button } from 'shared/ui/Button';
 import { ButtonTheme } from 'shared/ui/Button/Button';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
-import { Page } from 'shared/ui/Page';
+import { Page } from 'widgets/Page';
 import styles from './ArticleDetailsPage.module.scss';
 import {
   articleDetailsCommentsReducer,
