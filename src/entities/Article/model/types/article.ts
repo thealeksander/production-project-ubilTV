@@ -6,6 +6,12 @@ export enum ArticleBlockType {
   TEXT = 'TEXT',
 }
 
+export enum ArticleSortField {
+  VIEWS = 'views',
+  TITLE = 'title',
+  CREATED = 'createdAt',
+}
+
 export enum ArticleView {
   LIST = 'LIST',
   TILE = 'TILE',
