@@ -38,6 +38,7 @@ const articlesPageSlice = createSlice({
     search: '',
     order: 'asc',
     _inited: false,
+    type: ArticleType.All,
   }),
   reducers: {
     setView: (state, action: PayloadAction<ArticleView>) => {
@@ -55,6 +56,9 @@ const articlesPageSlice = createSlice({
     },
     setSearch: (state, action: PayloadAction<string>) => {
       state.search = action.payload;
+    },
+    setType: (state, action: PayloadAction<ArticleType>) => {
+      state.type = action.payload;
     },
     initState: state => {
       const view = localStorage.getItem(

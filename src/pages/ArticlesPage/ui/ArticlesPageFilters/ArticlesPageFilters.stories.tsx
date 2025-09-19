@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { ArticlesPageFilters } from './ArticlesPageFilters';
 
 const meta = {
-  title: 'pages/ArticlesPageFilters',
+  title: 'pages/Article/ArticlesPageFilters',
   component: ArticlesPageFilters,
   parameters: {
     layout: 'centered',
