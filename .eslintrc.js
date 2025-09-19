@@ -57,7 +57,10 @@ module.exports = {
     'no-underscore-dangle': 'off',
     'no-undef': 'off',
     // только на отсутствие переводов jsx
-    'i18next/no-literal-string': ['warn', { markupOnly: true }],
+    'i18next/no-literal-string': [
+      'warn',
+      { markupOnly: true, ignoreAttribute: ['target'] },
+    ],
     'max-len': [
       'error',
       {
