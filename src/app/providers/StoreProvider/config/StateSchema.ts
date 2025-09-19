@@ -15,6 +15,7 @@ import { LoginSchema } from 'features/AuthByUsername';
 import { ScrollSaveSchema } from 'features/scrollSave';
 import { ArticleDetailsCommentsSchema } from 'pages/ArticleDetailsPage';
 import { ArticlesPageSchema } from 'pages/ArticlesPage';
+import { ArticleDetailsRecommendationsSchema } from '../../../../pages/ArticleDetailsPage/model/types/ArticleDetailsRecommendationsSchema';
 
 export interface StateSchema {
   counter: CounterSchema;
@@ -25,6 +26,7 @@ export interface StateSchema {
   profile?: ProfilSchema;
   articleDetails?: ArticleDetailsSchema;
   articleDetailsComments?: ArticleDetailsCommentsSchema;
+  articleDetailsRecommendations?: ArticleDetailsRecommendationsSchema;
   addCommentForm?: AddCommentFormSchema;
   articlesPage?: ArticlesPageSchema;
 }

@@ -1,5 +1,5 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { memo } from 'react';
+import { HTMLAttributeAnchorTarget, memo } from 'react';
 import { ArticleListItemSkeleton } from 'entities/Article/ui/ArticleListItem/ArticleListItemSkeleton';
 import { Text } from 'shared/ui/Text';
 import { useTranslation } from 'react-i18next';
@@ -12,6 +12,7 @@ interface ArticleListProps {
   articles: Article[];
   isLoading?: boolean;
   view?: ArticleView;
+  target?: HTMLAttributeAnchorTarget;
 }
 
 const getSkeletons = (view: ArticleView) =>
@@ -27,7 +28,13 @@ const getSkeletons = (view: ArticleView) =>
 
 export const ArticleList = memo((props: ArticleListProps) => {
   const { t } = useTranslation();
-  const { className, articles, view = ArticleView.TILE, isLoading } = props;
+  const {
+    className,
+    articles,
+    view = ArticleView.TILE,
+    isLoading,
+    target,
+  } = props;
 
   const renderArticle = (article: Article) => (
     <ArticleListItem
@@ -35,6 +42,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
       view={view}
       className={styles.card}
       key={article.id}
+      target={target}
     />
   );
 

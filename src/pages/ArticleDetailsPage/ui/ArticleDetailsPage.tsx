@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames';
 import { memo, useCallback } from 'react';
-import { ArticleDetails } from 'entities/Article';
+import { ArticleDetails, ArticleList } from 'entities/Article';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Text } from 'shared/ui/Text';
 import { CommentList, CommentType } from 'entities/Comment';
@@ -17,6 +17,7 @@ import { Button } from 'shared/ui/Button';
 import { ButtonTheme } from 'shared/ui/Button/Button';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { Page } from 'widgets/Page';
+import { TextSize } from 'shared/ui/Text/Text';
 import styles from './ArticleDetailsPage.module.scss';
 import {
   articleDetailsCommentsReducer,
@@ -28,38 +29,20 @@ import {
 } from '../model/selectors/comments';
 import { fetchCommentsByArticleId } from '../model/services/fetchCommentsByArticleId';
 import { addCommentForArticle } from '../model/services/addCommentForArticle';
+import {
+  articleDetailsRecommendationsReducer,
+  getArticleRecommendations,
+} from '../model/slices/articleDetailsRecommendationsSlice';
+import { getArticleRecommendationsIsLoading } from '../model/selectors/recommendations';
+import { fetchArticleRecommendations } from '../model/services/fetchArticleRecommendations';
 
 interface ArticleDetailsPageProps {
   className?: string;
 }
 
-const mockComments: CommentType[] = [
-  {
-    id: '1',
-    text: 'comment 1',
-    user: {
-      id: '1',
-      username: 'alkuz',
-      avatar:
-        // eslint-disable-next-line max-len
-        'https://cdn.forbes.ru/forbes-static/new/2024/07/1a97fec5-d64b-47a2-8a18-df96b9cc13c3-668e4b6f8568e.webp',
-    },
-  },
-  {
-    id: '2',
-    text: 'comment 2',
-    user: {
-      id: '1',
-      username: 'alkuz',
-      avatar:
-        // eslint-disable-next-line max-len
-        'https://cdn.forbes.ru/forbes-static/new/2024/07/1a97fec5-d64b-47a2-8a18-df96b9cc13c3-668e4b6f8568e.webp',
-    },
-  },
-];
-
 const reducers: ReducerList = {
   articleDetailsComments: articleDetailsCommentsReducer,
+  articleDetailsRecommendations: articleDetailsRecommendationsReducer,
 };
 
 const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
@@ -68,7 +51,11 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
   const { id } = useParams<{ id: string }>();
   const dispatch = useAppDispatch();
   const comments = useSelector(getArticleComments.selectAll);
+  const recommendations = useSelector(getArticleRecommendations.selectAll);
   const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
+  const recommendationsIsLoading = useSelector(
+    getArticleRecommendationsIsLoading,
+  );
   const commentsError = useSelector(getArticleCommentsError);
   const navigate = useNavigate();
 
@@ -85,6 +72,7 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
 
   useInitialEffect(() => {
     dispatch(fetchCommentsByArticleId(id));
+    dispatch(fetchArticleRecommendations());
   });
 
   if (!id) {
@@ -101,7 +89,22 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
         {t('Назад к списку')}
       </Button>
       <ArticleDetails id={id} />
-      <Text className={styles.commentTitle} title={t('Комментарии')} />
+      <Text
+        size={TextSize.L}
+        className={styles.commentTitle}
+        title={t('Рекомендуем')}
+      />
+      <ArticleList
+        articles={recommendations}
+        isLoading={recommendationsIsLoading}
+        className={styles.recommendations}
+        target="_blank"
+      />
+      <Text
+        size={TextSize.L}
+        className={styles.commentTitle}
+        title={t('Комментарии')}
+      />
       <AddCommentFormLazy onSendComment={onSendComment} />
       <CommentList isLoading={commentsIsLoading} comments={comments} />
     </Page>
