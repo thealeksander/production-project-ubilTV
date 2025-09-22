@@ -5,6 +5,7 @@ import styles from './Text.module.scss';
 
 export const TextTheme = {
   PRIMARY: 'primary',
+  INVERTED: 'inverted',
   ERROR: 'error',
 } as const;
 

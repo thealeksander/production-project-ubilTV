@@ -4,7 +4,7 @@ import { memo, useCallback } from 'react';
 import { ArticleDetails, ArticleList } from 'entities/Article';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Text } from 'shared/ui/Text';
-import { CommentList, CommentType } from 'entities/Comment';
+import { CommentList } from 'entities/Comment';
 import {
   ReducerList,
   useDynamicModuleLoader,
@@ -22,19 +22,20 @@ import styles from './ArticleDetailsPage.module.scss';
 import {
   articleDetailsCommentsReducer,
   getArticleComments,
-} from '../model/slices/articleDetailsCommentsSlice';
+} from '../../model/slices/articleDetailsCommentsSlice';
 import {
   getArticleCommentsError,
   getArticleCommentsIsLoading,
-} from '../model/selectors/comments';
-import { fetchCommentsByArticleId } from '../model/services/fetchCommentsByArticleId';
-import { addCommentForArticle } from '../model/services/addCommentForArticle';
+} from '../../model/selectors/comments';
+import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId';
+import { addCommentForArticle } from '../../model/services/addCommentForArticle';
 import {
   articleDetailsRecommendationsReducer,
   getArticleRecommendations,
-} from '../model/slices/articleDetailsRecommendationsSlice';
-import { getArticleRecommendationsIsLoading } from '../model/selectors/recommendations';
-import { fetchArticleRecommendations } from '../model/services/fetchArticleRecommendations';
+} from '../../model/slices/articleDetailsRecommendationsSlice';
+import { getArticleRecommendationsIsLoading } from '../../model/selectors/recommendations';
+import { fetchArticleRecommendations } from '../../model/services/fetchArticleRecommendations';
+import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 
 interface ArticleDetailsPageProps {
   className?: string;
@@ -85,9 +86,7 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
 
   return (
     <Page className={classNames(styles.articleDetailsPage, {}, [className])}>
-      <Button theme={ButtonTheme.OUTLINE} onClick={onBackToList}>
-        {t('Назад к списку')}
-      </Button>
+      <ArticleDetailsPageHeader />
       <ArticleDetails id={id} />
       <Text
         size={TextSize.L}
