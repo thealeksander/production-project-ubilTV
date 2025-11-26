@@ -26,6 +26,7 @@ import {
   ArticleBlock,
   ArticleBlockType,
 } from 'entities/Article/model/types/article';
+import { HStack, VStack } from 'shared/ui/Stack';
 import styles from './ArticleDetails.module.scss';
 import { ArticleCodeBlock } from '../ArticleCodeBlock';
 import { ArticleImageBlock } from '../ArticleImageBlock';
@@ -52,29 +53,11 @@ export const ArticleDetails = ({ className, id }: ArticleDetailsProps) => {
   const renderBlock = useCallback((block: ArticleBlock) => {
     switch (block.type) {
       case ArticleBlockType.CODE:
-        return (
-          <ArticleCodeBlock
-            key={block.id}
-            className={styles.block}
-            block={block}
-          />
-        );
+        return <ArticleCodeBlock key={block.id} block={block} />;
       case ArticleBlockType.IMAGE:
-        return (
-          <ArticleImageBlock
-            key={block.id}
-            className={styles.block}
-            block={block}
-          />
-        );
+        return <ArticleImageBlock key={block.id} block={block} />;
       case ArticleBlockType.TEXT:
-        return (
-          <ArticleTextBlock
-            key={block.id}
-            className={styles.block}
-            block={block}
-          />
-        );
+        return <ArticleTextBlock key={block.id} block={block} />;
       default:
         return null;
     }
@@ -97,10 +80,10 @@ export const ArticleDetails = ({ className, id }: ArticleDetailsProps) => {
           height={200}
           border="50%"
         />
-        <Skeleton className={styles.title} width={300} height={32} />
-        <Skeleton className={styles.skeleton} width={600} height={24} />
-        <Skeleton className={styles.skeleton} width="100%" height={200} />
-        <Skeleton className={styles.skeleton} width="100%" height={200} />
+        <Skeleton width={300} height={32} />
+        <Skeleton width={600} height={24} />
+        <Skeleton width="100%" height={200} />
+        <Skeleton width="100%" height={200} />
       </>
     );
   } else if (error) {
@@ -113,31 +96,33 @@ export const ArticleDetails = ({ className, id }: ArticleDetailsProps) => {
   } else {
     content = (
       <>
-        <div className={styles.avatarWrapper}>
+        <HStack justify="center" max>
           <Avatar size={200} src={articleData?.img} className={styles.avatar} />
-        </div>
-        <Text
-          className={styles.title}
-          title={articleData?.title}
-          text={articleData?.subtitle}
-          size={TextSize.L}
-        />
-        <div className={styles.articleInfo}>
-          <Icon Svg={EyeIcon} className={styles.icon} />
-          <Text text={String(articleData?.views)} />
-        </div>
-        <div className={styles.articleInfo}>
-          <Icon Svg={ClaendarIcon} className={styles.icon} />
-          <Text text={articleData?.createdAt} />
-        </div>
+        </HStack>
+        <VStack gap="4" max>
+          <Text
+            title={articleData?.title}
+            text={articleData?.subtitle}
+            size={TextSize.L}
+          />
+          <HStack gap="8">
+            <Icon Svg={EyeIcon} />
+            <Text text={String(articleData?.views)} />
+          </HStack>
+          <HStack gap="8">
+            <Icon Svg={ClaendarIcon} />
+            <Text text={articleData?.createdAt} />
+          </HStack>
+        </VStack>
+
         {articleData?.blocks.map(renderBlock)}
       </>
     );
   }
 
   return (
-    <div className={classNames(styles.articleDetails, {}, [className])}>
+    <VStack gap="16" className={classNames('', {}, [className])}>
       {content}
-    </div>
+    </VStack>
   );
 };

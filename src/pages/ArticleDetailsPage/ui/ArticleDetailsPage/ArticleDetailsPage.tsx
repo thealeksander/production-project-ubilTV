@@ -18,6 +18,7 @@ import { ButtonTheme } from 'shared/ui/Button/Button';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { Page } from 'widgets/Page';
 import { TextSize } from 'shared/ui/Text/Text';
+import { VStack } from 'shared/ui/Stack';
 import styles from './ArticleDetailsPage.module.scss';
 import {
   articleDetailsCommentsReducer,
@@ -86,26 +87,28 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
 
   return (
     <Page className={classNames(styles.articleDetailsPage, {}, [className])}>
-      <ArticleDetailsPageHeader />
-      <ArticleDetails id={id} />
-      <Text
-        size={TextSize.L}
-        className={styles.commentTitle}
-        title={t('Рекомендуем')}
-      />
-      <ArticleList
-        articles={recommendations}
-        isLoading={recommendationsIsLoading}
-        className={styles.recommendations}
-        target="_blank"
-      />
-      <Text
-        size={TextSize.L}
-        className={styles.commentTitle}
-        title={t('Комментарии')}
-      />
-      <AddCommentFormLazy onSendComment={onSendComment} />
-      <CommentList isLoading={commentsIsLoading} comments={comments} />
+      <VStack gap="16" max>
+        <ArticleDetailsPageHeader />
+        <ArticleDetails id={id} />
+        <Text
+          size={TextSize.L}
+          className={styles.commentTitle}
+          title={t('Рекомендуем')}
+        />
+        <ArticleList
+          articles={recommendations}
+          isLoading={recommendationsIsLoading}
+          className={styles.recommendations}
+          target="_blank"
+        />
+        <Text
+          size={TextSize.L}
+          className={styles.commentTitle}
+          title={t('Комментарии')}
+        />
+        <AddCommentFormLazy onSendComment={onSendComment} />
+        <CommentList isLoading={commentsIsLoading} comments={comments} />
+      </VStack>
     </Page>
   );
 };

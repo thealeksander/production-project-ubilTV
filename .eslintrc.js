@@ -25,6 +25,8 @@ module.exports = {
     'eslint-plugin-prettier',
     'i18next',
     'react-hooks',
+    'ulbi-tv-plugin',
+    // 'kuz-plugin', //видимо проблема с версиями
   ],
   rules: {
     'prettier/prettier': [
@@ -51,7 +53,12 @@ module.exports = {
         devDependencies: true,
       },
     ],
-    'react/jsx-props-no-spreading': 'warn',
+    'react/jsx-props-no-spreading': [
+      'warn',
+      {
+        custom: 'ignore',
+      },
+    ],
     // Уже исправили в новой версии
     'no-shadow': 'warn',
     'no-underscore-dangle': 'off',
@@ -77,6 +84,8 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'error', // Checks effect dependencies
     'no-param-reassign': 'off', // противоречит концепции redux
     'react/no-array-index-key': 'warn',
+    // 'ulbi-tv-plugin/path-checker': 'error',
+    // 'kuz-plugin/path-checker': 'error',
   },
   globals: {
     __IS_DEV__: true,

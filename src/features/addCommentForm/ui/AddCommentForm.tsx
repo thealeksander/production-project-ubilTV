@@ -10,6 +10,7 @@ import {
   ReducerList,
   useDynamicModuleLoader,
 } from 'shared/lib/hooks/useDynamicModuleLoader';
+import { HStack } from 'shared/ui/Stack';
 import styles from './AddCommentForm.module.scss';
 import {
   getAddCommentFormError,
@@ -52,7 +53,11 @@ const AddCommentForm = (props: AddCommentFormProps) => {
   }, [onSendComment, onCommnetTextChange, text]);
 
   return (
-    <div className={classNames(styles.addCommentForm, {}, [className])}>
+    <HStack
+      justify="between"
+      max
+      className={classNames(styles.addCommentForm, {}, [className])}
+    >
       <Input
         className={styles.input}
         placeholder={t('Введите текст комментария')}
@@ -62,7 +67,7 @@ const AddCommentForm = (props: AddCommentFormProps) => {
       <Button onClick={onSendHandler} theme={ButtonTheme.OUTLINE}>
         {t('Отправить')}
       </Button>
-    </div>
+    </HStack>
   );
 };
 

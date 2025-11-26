@@ -40,7 +40,7 @@ export const Select = memo((props: SelectProps) => {
 
   return (
     <div className={classNames(styles.wrapper, mods, [className])}>
-      {label && <span className={styles.label}>{`${label}>`}</span>}
+      {label && <span>{`${label}>`}</span>}
 
       <select
         disabled={readonly}

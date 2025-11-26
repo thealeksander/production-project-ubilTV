@@ -13,6 +13,7 @@ import {
 } from 'entities/Profile';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { getUserAuthData } from 'entities/User';
+import { HStack } from 'shared/ui/Stack';
 import styles from './ProfilePageHeader.module.scss';
 
 interface ProfilePageHeaderProps {
@@ -41,42 +42,32 @@ export const ProfilePageHeader: FC<ProfilePageHeaderProps> = ({
     dispatch(updateProfileData());
   }, [dispatch]);
 
-  console.log('authData', authData?.id);
-  console.log('profileData', profileData?.id);
-
   const canEdit = authData?.id === profileData?.id;
 
-  console.log('canEdit', canEdit);
-
   return (
-    <div className={classNames(styles.profilePageHeader, {}, [className])}>
+    <HStack
+      justify="between"
+      className={classNames(styles.profilePageHeader, {}, [className])}
+    >
       <Text title={t('Профиль')} />
       {canEdit && (
-        <div className={styles.btnsWrapper}>
+        <div>
           {readonly ? (
-            <Button
-              className={styles.editBtn}
-              theme={ButtonTheme.OUTLINE}
-              onClick={onEdit}
-            >
+            <Button theme={ButtonTheme.OUTLINE} onClick={onEdit}>
               {t('Редактировать')}
             </Button>
           ) : (
-            <div>
+            <HStack gap="8">
               <Button theme={ButtonTheme.OUTLINE_RED} onClick={onCancelEdit}>
                 {t('Отменить')}
               </Button>
-              <Button
-                className={styles.saveBtn}
-                theme={ButtonTheme.OUTLINE}
-                onClick={onSave}
-              >
+              <Button theme={ButtonTheme.OUTLINE} onClick={onSave}>
                 {t('Сохранить')}
               </Button>
-            </div>
+            </HStack>
           )}
         </div>
       )}
-    </div>
+    </HStack>
   );
 };
