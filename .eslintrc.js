@@ -66,7 +66,7 @@ module.exports = {
     // только на отсутствие переводов jsx
     'i18next/no-literal-string': [
       'warn',
-      { markupOnly: true, ignoreAttribute: ['target'] },
+      { markupOnly: true, ignoreAttribute: ['role, target'] },
     ],
     'max-len': [
       'error',
